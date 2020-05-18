@@ -8,6 +8,10 @@
     <class>entidades.LineaInvestigacion</class>
     <class>entidades.Doctor</class>
     <class>entidades.Profesor</class>
+    <class>entidades.Periodo</class>
+    <class>entidades.Proyecto</class>
+    <class>entidades.PubCongreso</class>
+    <class>entidades.PubRevistas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/casoproyectoinvestigacion?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

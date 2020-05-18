@@ -1,59 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Date;
 
-/**
- *
- * @author carls
- */
-@Entity
+
+
 public class Periodo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+ 
+   Date inicio;
+   Date fin;
 
-    public Integer getId() {
-        return id;
+    public Date getInicio() {
+        return inicio;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Date getFin() {
+        return fin;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Periodo)) {
-            return false;
-        }
-        Periodo other = (Periodo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setFin(Date fin) {
+        this.fin = fin;
     }
 
-    @Override
-    public String toString() {
-        return "entidades.Periodo[ id=" + id + " ]";
-    }
+   
     
 }

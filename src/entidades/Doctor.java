@@ -16,44 +16,23 @@ import javax.persistence.Id;
  * @author carls
  */
 @Entity
-public class Doctor implements Serializable {
+public class Doctor extends Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    Profesor supervisado;
 
-    public Integer getId() {
-        return id;
+    String doctorado;
+
+    public Profesor getSupervisado() {
+        return supervisado;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Doctor)) {
-            return false;
-        }
-        Doctor other = (Doctor) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setSupervisado(Profesor supervisado) {
+        this.supervisado = supervisado;
     }
 
     @Override
     public String toString() {
         return "entidades.Doctor[ id=" + id + " ]";
     }
-    
+
 }
