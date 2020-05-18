@@ -3,6 +3,11 @@
   <persistence-unit name="CasoProyectoDeInvestigacionPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.Administrador</class>
+    <class>entidades.Usuario</class>
+    <class>entidades.Publicacion</class>
+    <class>entidades.LineaInvestigacion</class>
+    <class>entidades.Doctor</class>
+    <class>entidades.Profesor</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/casoproyectoinvestigacion?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
