@@ -83,6 +83,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
        this.dispose();
        is.setVisible(true);
+       
     }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
 
