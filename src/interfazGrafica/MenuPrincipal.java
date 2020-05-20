@@ -14,9 +14,9 @@ import javax.persistence.EntityManager;
 public class MenuPrincipal extends javax.swing.JFrame {
 
    EntityManager em;
-   InicioSesion is;
+   MenuInicioSesion is;
    
-    public MenuPrincipal(EntityManager em,InicioSesion is) {
+    public MenuPrincipal(EntityManager em,MenuInicioSesion is) {
         initComponents();
         this.em=em;
         this.is=is;
@@ -31,7 +31,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botonCerrarSesion = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonPrograma = new javax.swing.JButton();
+        botonLinea = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,15 +47,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jButton1.setText("Maestro/Profesor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        botonPrograma.setText("Programa de Investigacion");
+
+        botonLinea.setText("Linea de Investigacion");
+
+        jButton3.setText("jButton3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(283, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonCerrarSesion)
                 .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -61,8 +72,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonPrograma)
+                    .addComponent(botonLinea)
+                    .addComponent(jButton3))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,8 +85,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(botonPrograma)
+                .addGap(18, 18, 18)
+                .addComponent(botonLinea)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(botonCerrarSesion)
                 .addGap(49, 49, 49))
         );
@@ -100,11 +117,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
        
     }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrarSesion;
+    private javax.swing.JButton botonLinea;
+    private javax.swing.JButton botonPrograma;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

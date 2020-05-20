@@ -11,32 +11,90 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author carls
  */
 @Entity
-public class PubCongreso implements Serializable {
+public class PubCongreso extends Publicacion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+  
+    private String nombreCongreso;
     
-    public String nombreCongreso;
+    private String tipo;
     
-    public String tipo;
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicio;
     
-    public Date fechaInicio;
+     @Temporal(TemporalType.DATE)
+    private Date fechaFin;
     
-    public Date fechaFin;
+    private String lugar;
     
-    public String lugar;
+    private String pais;
     
-    public String pais;
-    
-    public String editorialActas;
+    private String editorialActas;
 
-    public Publicacion publicacion;
+
+    public String getNombreCongreso() {
+        return nombreCongreso;
+    }
+
+    public void setNombreCongreso(String nombreCongreso) {
+        this.nombreCongreso = nombreCongreso;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getEditorialActas() {
+        return editorialActas;
+    }
+
+    public void setEditorialActas(String editorialActas) {
+        this.editorialActas = editorialActas;
+    }
+
+    
+    
 }

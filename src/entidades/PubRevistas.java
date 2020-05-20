@@ -16,44 +16,59 @@ import javax.persistence.Id;
  * @author carls
  */
 @Entity
-public class PubRevistas implements Serializable {
+public class PubRevistas extends Publicacion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
-    public Long getId() {
-        return id;
+    private String editorial;
+    
+    private String nombre;
+    
+    private Integer numero;
+    
+    private Integer pagInicio;
+    
+    private Integer pagFin;
+
+    public String getEditorial() {
+        return editorial;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getNombre() {
+        return nombre;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PubRevistas)) {
-            return false;
-        }
-        PubRevistas other = (PubRevistas) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "entidades.PubRevistas[ id=" + id + " ]";
+    public Integer getNumero() {
+        return numero;
     }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public Integer getPagInicio() {
+        return pagInicio;
+    }
+
+    public void setPagInicio(Integer pagInicio) {
+        this.pagInicio = pagInicio;
+    }
+
+    public Integer getPagFin() {
+        return pagFin;
+    }
+
+    public void setPagFin(Integer pagFin) {
+        this.pagFin = pagFin;
+    }
+
+
     
 }

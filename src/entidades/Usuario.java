@@ -7,21 +7,17 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author carls
  */
-@Entity
+
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     public Integer id;
 
     public Integer getId() {
@@ -39,26 +35,6 @@ public class Usuario implements Serializable {
     private String telefono;
 
     private Integer numDespacho;
-
-    private ArrayList<Publicacion> listaPublicaciones;
-
-    private ArrayList<LineaInvestigacion> listaLineaInvParticipadas;
-
-    public ArrayList<LineaInvestigacion> getListaLineaInvParticipadas() {
-        return listaLineaInvParticipadas;
-    }
-
-    public void setListaLineaInvParticipadas(ArrayList<LineaInvestigacion> listaLineaInvParticipadas) {
-        this.listaLineaInvParticipadas = listaLineaInvParticipadas;
-    }
-
-    public ArrayList<Publicacion>  getListaPublicaciones() {
-        return listaPublicaciones;
-    }
-
-    public void setListaPublicaciones(ArrayList<Publicacion>  listaPublicaciones) {
-        this.listaPublicaciones = listaPublicaciones;
-    }
 
     public Integer getNumDespacho() {
         return numDespacho;

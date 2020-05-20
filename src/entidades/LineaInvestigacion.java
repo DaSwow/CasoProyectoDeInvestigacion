@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import static org.eclipse.persistence.expressions.ExpressionOperator.any;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
 public class LineaInvestigacion implements Serializable {
@@ -16,12 +17,27 @@ public class LineaInvestigacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
 
-    public String nombre;
+    private String nombre;
 
-    public ArrayList<String> descriptores;
+    private ArrayList<String> descriptores;
 
-    public ArrayList<Object> listaProfesoresInvolucrados;
+    private ArrayList<Object> listaProfesoresInvolucrados;
 
+    @ManyToMany(mappedBy = "listaProfesoresInvolucrados")
+    private ArrayList<Publicacion> listaPublicaciones;
+
+    
+    
+    public ArrayList<Publicacion> getListaPublicaciones() {
+        return listaPublicaciones;
+    }
+
+    public void setListaPublicaciones(ArrayList<Publicacion> listaPublicaciones) {
+        this.listaPublicaciones = listaPublicaciones;
+    }
+    
+    
+    
     public ArrayList<Object> getListaProfesoresInvolucrados() {
         return listaProfesoresInvolucrados;
     }

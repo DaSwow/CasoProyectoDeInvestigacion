@@ -6,32 +6,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Proyecto implements Serializable {
+public class ProyectoInvestigacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public String programaInvestigacion;
+    private String programaInvestigacion;
 
-    public String acronimo;
+    private String acronimo;
 
-    public float presupuesto;
+    private float presupuesto;
 
-    public String programaFinanciador;
+    private String programaFinanciador;
 
-    public Date fechaInicio;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicio;
 
-    public Date fechaFin;
+    @Temporal(TemporalType.DATE)
+    private Date fechaFin;
 
-    public String descripcion;
+    private String descripcion;
 
-    public Doctor encargado;
+    private Doctor encargado;
 
-    public Integer numeroPublicaciones;
+    private Integer numeroPublicaciones;
 
     public String getProgramaInvestigacion() {
         return programaInvestigacion;
@@ -116,6 +121,8 @@ public class Proyecto implements Serializable {
         this.id = id;
     }
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -126,10 +133,10 @@ public class Proyecto implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Proyecto)) {
+        if (!(object instanceof ProyectoInvestigacion)) {
             return false;
         }
-        Proyecto other = (Proyecto) object;
+        ProyectoInvestigacion other = (ProyectoInvestigacion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
