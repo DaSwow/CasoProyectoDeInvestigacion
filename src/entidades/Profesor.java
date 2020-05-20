@@ -31,7 +31,7 @@ public class Profesor extends Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id = super.getId();
 
-    private Periodo periodo;
+    private Collection<Periodo> periodo;
 
     @ManyToMany(mappedBy = "listaSupervisados",fetch=FetchType.LAZY)
     private Collection<Doctor> listaSupervisores;
@@ -76,11 +76,11 @@ public class Profesor extends Usuario implements Serializable {
         this.pubRevistas = pubRevistas;
     }
 
-    public Periodo getPeriodo() {
+    public Collection<Periodo> getPeriodo() {
         return periodo;
     }
 
-    public void setPeriodo(Periodo periodo) {
+    public void setPeriodo(Collection<Periodo> periodo) {
         this.periodo = periodo;
     }
 
