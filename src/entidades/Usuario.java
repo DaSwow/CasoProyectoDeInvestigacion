@@ -6,15 +6,22 @@
 package entidades;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author carls
  */
-
+@MappedSuperclass
 public class Usuario implements Serializable {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
     public Integer getId() {
@@ -25,12 +32,16 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
+    @Column(name="nombre")
     private String stringnombre;
 
+    @Column(name="apellidos")
     private String apellidos;
 
+    @Column(name="telefono")
     private String telefono;
 
+    @Column(name="numDespacho")
     private Integer numDespacho;
 
     public Integer getNumDespacho() {

@@ -118,7 +118,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+MenuProfesorDoctor menuProfesorDoctor=new MenuProfesorDoctor(em);
+menuProfesorDoctor.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

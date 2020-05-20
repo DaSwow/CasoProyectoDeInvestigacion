@@ -28,6 +28,7 @@ public class ProfesorDAOImpl implements IProfesorDAO {
 
     @Override
     public void create(Profesor profesor) {
+        
         ensureTransaction();
         if (profesor.getId() == null) {
             this.em.persist(profesor);

@@ -9,12 +9,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 /**
  *
@@ -27,11 +27,11 @@ public class Profesor extends Usuario implements Serializable {
     @ManyToMany(mappedBy = "listaProfesoresInvolucrados")
     private List<LineaInvestigacion> lineaInvestigacions;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id = super.getId();
+ 
 
+    @Column(name="periodos")
     private Collection<Periodo> periodo;
+
 
     @ManyToMany(mappedBy = "listaSupervisados",fetch=FetchType.LAZY)
     private Collection<Doctor> listaSupervisores;
