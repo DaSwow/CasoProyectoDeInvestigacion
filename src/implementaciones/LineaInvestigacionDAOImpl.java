@@ -3,8 +3,11 @@ package implementaciones;
 
 import DAO.ILineaInvestigacionDAO;
 import entidades.LineaInvestigacion;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 
 public class LineaInvestigacionDAOImpl implements ILineaInvestigacionDAO{
@@ -64,6 +67,15 @@ public class LineaInvestigacionDAOImpl implements ILineaInvestigacionDAO{
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<LineaInvestigacion> getAll() {
+        Query query = em.createQuery("from " + LineaInvestigacion.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
     
     

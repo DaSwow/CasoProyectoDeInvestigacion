@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,6 +24,9 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Doctor extends Usuario implements Serializable {
+
+    @OneToOne(mappedBy = "encargado")
+    private ProgramaInvestigacion programaInvestigacion;
 
     @ManyToMany(mappedBy = "listaDoctoresInvolucrados")
     private List<LineaInvestigacion> lineaInvestigacions;

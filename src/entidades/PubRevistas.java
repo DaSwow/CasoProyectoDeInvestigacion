@@ -21,6 +21,9 @@ import javax.persistence.ManyToOne;
 public class PubRevistas extends Publicacion implements Serializable {
 
     @ManyToOne
+    private ProgramaInvestigacion programaInvestigacion;
+
+    @ManyToOne
     private LineaInvestigacion lineaInvestigacion;
 
     @Id

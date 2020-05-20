@@ -27,6 +27,9 @@ import javax.persistence.TemporalType;
 public class PubCongreso extends Publicacion implements Serializable {
 
     @ManyToOne
+    private ProgramaInvestigacion programaInvestigacion;
+
+    @ManyToOne
     private LineaInvestigacion lineaInvestigacion;
 
     @Id

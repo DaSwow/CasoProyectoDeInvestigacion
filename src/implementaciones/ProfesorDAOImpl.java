@@ -7,8 +7,11 @@ package implementaciones;
 
 import DAO.IProfesorDAO;
 import entidades.Profesor;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -71,5 +74,14 @@ public class ProfesorDAOImpl implements IProfesorDAO {
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<Profesor> getAll() {
+        Query query = em.createQuery("from " + Profesor.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
 }

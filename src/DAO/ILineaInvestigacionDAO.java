@@ -1,6 +1,7 @@
 package DAO;
 
 import entidades.LineaInvestigacion;
+import java.util.Collection;
 
 public interface ILineaInvestigacionDAO {
 
@@ -12,4 +13,7 @@ public interface ILineaInvestigacionDAO {
 
     public void delete(LineaInvestigacion lineaInvestigacion);
 
+     public Collection<LineaInvestigacion> getAll();
+    
+    
 }

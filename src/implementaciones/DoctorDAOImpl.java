@@ -7,10 +7,12 @@ package implementaciones;
 
 import DAO.IDoctorDAO;
 import entidades.Doctor;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -73,6 +75,15 @@ public class DoctorDAOImpl implements IDoctorDAO {
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<Doctor> getAll() {
+       Query query = em.createQuery("from " + Doctor.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
 
 }

@@ -7,8 +7,11 @@ package implementaciones;
 
 import DAO.IPubCongresoDAO;
 import entidades.PubCongreso;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -71,6 +74,15 @@ public class PubCongresoDAOImpl implements IPubCongresoDAO {
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<PubCongreso> getAll() {
+        Query query = em.createQuery("from " + PubCongreso.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
     
 }

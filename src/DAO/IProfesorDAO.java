@@ -1,6 +1,7 @@
 package DAO;
 
 import entidades.Profesor;
+import java.util.Collection;
 
 public interface IProfesorDAO {
 
@@ -12,4 +13,6 @@ public interface IProfesorDAO {
 
     public void delete(Profesor profesor);
 
+     public Collection<Profesor> getAll();
+    
 }

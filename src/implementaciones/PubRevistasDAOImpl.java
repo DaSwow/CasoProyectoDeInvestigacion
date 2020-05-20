@@ -7,8 +7,11 @@ package implementaciones;
 
 import DAO.IPubRevistasDAO;
 import entidades.PubRevistas;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -70,6 +73,15 @@ public class PubRevistasDAOImpl implements IPubRevistasDAO {
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<PubRevistas> getAll() {
+        Query query = em.createQuery("from " + PubRevistas.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
     
 }

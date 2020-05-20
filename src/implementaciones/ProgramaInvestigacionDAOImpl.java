@@ -7,8 +7,11 @@ package implementaciones;
 
 import DAO.IProgramaInvestigacionDAO;
 import entidades.ProgramaInvestigacion;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -71,6 +74,15 @@ public class ProgramaInvestigacionDAOImpl implements IProgramaInvestigacionDAO {
             transaction.begin();
         }
 
+    }
+
+    @Override
+    public Collection<ProgramaInvestigacion> getAll() {
+        Query query = em.createQuery("from " + ProgramaInvestigacion.class.getName()  + " c");
+
+        ArrayList lista = new ArrayList(query.getResultList());
+       
+        return lista;
     }
 
 }

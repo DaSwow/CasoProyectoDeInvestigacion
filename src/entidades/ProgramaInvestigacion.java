@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,20 +29,21 @@ public class ProgramaInvestigacion implements Serializable {
 
     private String departamento;
 
-    private Collection<Object> integrantes;
+    @OneToMany(mappedBy = "programaInvestigacion")
+    public Collection<PubCongreso> listaPubCongresos;
 
+    
+    @OneToMany(mappedBy = "programaInvestigacion")
+    public Collection<PubRevistas> listaPubRevista;
+
+    @OneToMany(mappedBy = "programaInvestigacion")
+    public Collection<LineaInvestigacion> listaLineasInvestigacion;
+    
+    @OneToOne
     private Doctor encargado;
 
     @OneToMany(mappedBy = "programaInvestigacion")
     private Collection<ProyectoInvestigacion> proyectosInvestigacion;
-
-    public Collection<Object> getIntegrantes() {
-        return integrantes;
-    }
-
-    public void setIntegrantes(ArrayList<Object> integrantes) {
-        this.integrantes = integrantes;
-    }
 
     public Doctor getEncargado() {
         return encargado;

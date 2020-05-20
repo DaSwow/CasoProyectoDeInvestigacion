@@ -6,6 +6,7 @@
 package DAO;
 
 import entidades.PubRevistas;
+import java.util.Collection;
 
 /**
  *
@@ -21,4 +22,6 @@ public interface IPubRevistasDAO {
 
     public void delete(PubRevistas pubRevistas);
 
+     public Collection<PubRevistas> getAll();
+    
 }

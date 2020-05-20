@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import entidades.Doctor;
 import entidades.ProgramaInvestigacion;
+import java.util.Collection;
 
 /**
  *
@@ -21,5 +23,7 @@ public interface IProgramaInvestigacionDAO {
 
     public void delete(ProgramaInvestigacion programaInvestigacion);
 
+     public Collection<ProgramaInvestigacion> getAll();
+    
     
 }

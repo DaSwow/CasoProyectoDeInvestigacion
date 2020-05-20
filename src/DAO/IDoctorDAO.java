@@ -1,6 +1,7 @@
 package DAO;
 
 import entidades.Doctor;
+import java.util.Collection;
 
 public interface IDoctorDAO {
 
@@ -8,6 +9,8 @@ public interface IDoctorDAO {
 
     public Doctor read(Integer id);
 
+    public Collection<Doctor> getAll();
+    
     public void update(Doctor doctor);
 
     public void delete(Doctor doctor);
