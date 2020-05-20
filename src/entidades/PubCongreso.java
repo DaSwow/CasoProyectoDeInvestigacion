@@ -6,11 +6,16 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,15 +26,20 @@ import javax.persistence.TemporalType;
 @Entity
 public class PubCongreso extends Publicacion implements Serializable {
 
-  
+    @ManyToOne
+    private LineaInvestigacion lineaInvestigacion;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id=super.getId();
     private String nombreCongreso;
     
-    private String tipo;
+    private String tipo="Publicación en Congreso";
     
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     
-     @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date fechaFin;
     
     private String lugar;
@@ -38,7 +48,18 @@ public class PubCongreso extends Publicacion implements Serializable {
     
     private String editorialActas;
 
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    private Collection<Doctor> listaDoctoresInvolucrados = super.getListaDoctoresInvolucrados();
 
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    private Collection<Profesor> listaProfesoresInvolucrados = super.getListaProfesoresInvolucrados();
+
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    private Collection<LineaInvestigacion> listaLineasInvestigacion = super.getListaLineasInvestigacion();
+    
     public String getNombreCongreso() {
         return nombreCongreso;
     }
@@ -93,6 +114,44 @@ public class PubCongreso extends Publicacion implements Serializable {
 
     public void setEditorialActas(String editorialActas) {
         this.editorialActas = editorialActas;
+    }
+
+    public LineaInvestigacion getLineaInvestigacion() {
+        return lineaInvestigacion;
+    }
+
+    public void setLineaInvestigacion(LineaInvestigacion lineaInvestigacion) {
+        this.lineaInvestigacion = lineaInvestigacion;
+    }
+
+    @Override
+    public Collection<Doctor> getListaDoctoresInvolucrados() {
+        return listaDoctoresInvolucrados;
+    }
+
+    @Override
+    public void setListaDoctoresInvolucrados(ArrayList<Doctor> listaDoctoresInvolucrados) {
+        this.listaDoctoresInvolucrados = listaDoctoresInvolucrados;
+    }
+
+    @Override
+    public Collection<Profesor> getListaProfesoresInvolucrados() {
+        return listaProfesoresInvolucrados;
+    }
+
+    @Override
+    public void setListaProfesoresInvolucrados(ArrayList<Profesor> listaProfesoresInvolucrados) {
+        this.listaProfesoresInvolucrados = listaProfesoresInvolucrados;
+    }
+
+    @Override
+    public Collection<LineaInvestigacion> getListaLineasInvestigacion() {
+        return listaLineasInvestigacion;
+    }
+
+    @Override
+    public void setListaLineasInvestigacion(ArrayList<LineaInvestigacion> listaLineasInvestigacion) {
+        this.listaLineasInvestigacion = listaLineasInvestigacion;
     }
 
     

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,7 +18,8 @@ public class ProyectoInvestigacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String programaInvestigacion;
+    @ManyToOne
+    private ProgramaInvestigacion programaInvestigacion;
 
     private String acronimo;
 
@@ -25,7 +27,6 @@ public class ProyectoInvestigacion implements Serializable {
 
     private String programaFinanciador;
 
-    
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 
@@ -34,15 +35,16 @@ public class ProyectoInvestigacion implements Serializable {
 
     private String descripcion;
 
+    @ManyToOne
     private Doctor encargado;
 
     private Integer numeroPublicaciones;
 
-    public String getProgramaInvestigacion() {
+    public ProgramaInvestigacion getProgramaInvestigacion() {
         return programaInvestigacion;
     }
 
-    public void setProgramaInvestigacion(String programaInvestigacion) {
+    public void setProgramaInvestigacion(ProgramaInvestigacion programaInvestigacion) {
         this.programaInvestigacion = programaInvestigacion;
     }
 
@@ -110,9 +112,6 @@ public class ProyectoInvestigacion implements Serializable {
         this.numeroPublicaciones = numeroPublicaciones;
     }
 
-    
-    
-    
     public Integer getId() {
         return id;
     }
@@ -121,8 +120,6 @@ public class ProyectoInvestigacion implements Serializable {
         this.id = id;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

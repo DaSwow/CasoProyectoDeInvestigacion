@@ -7,14 +7,15 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,19 +24,65 @@ import javax.persistence.Table;
 @Entity
 public class Doctor extends Usuario implements Serializable {
 
-    Profesor supervisado;
+    @ManyToMany(mappedBy = "listaDoctoresInvolucrados")
+    private List<LineaInvestigacion> lineaInvestigacions;
+
+    
+    @ManyToMany(mappedBy = "listaDoctoresInvolucrados",fetch=FetchType.LAZY)
+    private Collection<PubRevistas> pubRevistas;
+
+    
+    @ManyToMany(mappedBy = "listaDoctoresInvolucrados",fetch=FetchType.LAZY)
+    private Collection<PubCongreso> pubCongresos;
+    
+    
+    @OneToMany(mappedBy = "encargado",fetch=FetchType.LAZY)
+    private Collection<ProyectoInvestigacion> proyectoInvestigacionsEncargado;
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    private Collection<Profesor>  listaSupervisados;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id=super.getId();
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id=super.getId();
     
-    String doctorado;
+    private String doctorado;
 
-    @ManyToMany(cascade=CascadeType.PERSIST,mappedBy="listaDoctoresInvolucrados")
-    @JoinColumn(name="listaPublicaciones")
-    private ArrayList<Publicacion> listaPublicaciones;
+    
+    
+    
+    public Collection<PubCongreso> getPubCongresos() {
+        return pubCongresos;
+    }
 
+    public void setPubCongresos(Collection<PubCongreso> pubCongresos) {
+        this.pubCongresos = pubCongresos;
+    }
 
+    public Collection<PubRevistas> getPubRevistas() {
+        return pubRevistas;
+    }
+
+    public void setPubRevistas(ArrayList<PubRevistas> pubRevistas) {
+        this.pubRevistas = pubRevistas;
+    }
+
+    public Collection<Profesor> getListaSupervisados() {
+        return listaSupervisados;
+    }
+
+    public void setListaSupervisados(ArrayList<Profesor> listaSupervisados) {
+        this.listaSupervisados = listaSupervisados;
+    }
+
+    public Collection<PubRevistas> getPubRevistass() {
+        return pubRevistas;
+    }
+
+    public void setPubRevistass(ArrayList<PubRevistas> pubRevistass) {
+        this.pubRevistas = pubRevistass;
+    }
+    
     public String getDoctorado() {
         return doctorado;
     }
@@ -44,22 +91,12 @@ public class Doctor extends Usuario implements Serializable {
         this.doctorado = doctorado;
     }
 
-    public ArrayList<Publicacion> getListaPublicaciones() {
-        return listaPublicaciones;
+    public Collection<ProyectoInvestigacion> getProyectoInvestigacionsEncargado() {
+        return proyectoInvestigacionsEncargado;
     }
 
-    public void setListaPublicaciones(ArrayList<Publicacion> listaPublicaciones) {
-        this.listaPublicaciones = listaPublicaciones;
-    }
-    
-    
-    
-    public Profesor getSupervisado() {
-        return supervisado;
-    }
-
-    public void setSupervisado(Profesor supervisado) {
-        this.supervisado = supervisado;
+    public void setProyectoInvestigacionsEncargado(ArrayList<ProyectoInvestigacion> proyectoInvestigacionsEncargado) {
+        this.proyectoInvestigacionsEncargado = proyectoInvestigacionsEncargado;
     }
 
     @Override

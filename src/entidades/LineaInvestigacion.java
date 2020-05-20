@@ -2,51 +2,91 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class LineaInvestigacion implements Serializable {
 
+    @ManyToMany(mappedBy = "listaLineasInvestigacion",fetch=FetchType.LAZY)
+    private List<PubRevistas> pubRevistass;
+
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
 
     private String nombre;
 
-    private ArrayList<String> descriptores;
+    private Collection<String> descriptores;
 
-    private ArrayList<Object> listaProfesoresInvolucrados;
+    @ManyToMany
+    private Collection<Profesor> listaProfesoresInvolucrados;
 
-    @ManyToMany(mappedBy = "listaProfesoresInvolucrados")
-    private ArrayList<Publicacion> listaPublicaciones;
+    @ManyToMany
+    private Collection<Doctor> listaDoctoresInvolucrados;
+    
+    @OneToMany(mappedBy = "lineaInvestigacion")
+    private Collection<PubCongreso> pubCongresos;
 
+    @OneToMany(mappedBy = "lineaInvestigacion")
+    private Collection<PubRevistas> pubRevistas;
     
     
-    public ArrayList<Publicacion> getListaPublicaciones() {
-        return listaPublicaciones;
+    public Collection<Doctor> getListaDoctoresInvolucrados() {
+        return listaDoctoresInvolucrados;
     }
 
-    public void setListaPublicaciones(ArrayList<Publicacion> listaPublicaciones) {
-        this.listaPublicaciones = listaPublicaciones;
+    public void setListaDoctoresInvolucrados(Collection<Doctor> listaDoctoresInvolucrados) {
+        this.listaDoctoresInvolucrados = listaDoctoresInvolucrados;
     }
     
+    public List<PubRevistas> getPubRevistass() {
+        return pubRevistass;
+    }
+
+    public void setPubRevistass(List<PubRevistas> pubRevistass) {
+        this.pubRevistass = pubRevistass;
+    }
+
+    public Collection<PubCongreso> getPubCongresos() {
+        return pubCongresos;
+    }
+
+    public void setPubCongresos(Collection<PubCongreso> pubCongresos) {
+        this.pubCongresos = pubCongresos;
+    }
+
+    public Collection<PubRevistas> getPubRevistas() {
+        return pubRevistas;
+    }
+
+    public void setPubRevistas(Collection<PubRevistas> pubRevistas) {
+        this.pubRevistas = pubRevistas;
+    }
+
     
     
-    public ArrayList<Object> getListaProfesoresInvolucrados() {
+ 
+    
+    public Collection<Profesor> getListaProfesoresInvolucrados() {
         return listaProfesoresInvolucrados;
     }
 
-    public void setListaProfesoresInvolucrados(ArrayList<Object> listaProfesoresInvolucrados) {
+    public void setListaProfesoresInvolucrados(ArrayList<Profesor> listaProfesoresInvolucrados) {
         this.listaProfesoresInvolucrados = listaProfesoresInvolucrados;
     }
 
-    public ArrayList<String> getDescriptores() {
+    public Collection<String> getDescriptores() {
         return descriptores;
     }
 

@@ -7,10 +7,12 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,13 +28,14 @@ public class ProgramaInvestigacion implements Serializable {
 
     private String departamento;
 
-    private ArrayList<Object> integrantes;
+    private Collection<Object> integrantes;
 
     private Doctor encargado;
 
-    private ArrayList<ProyectoInvestigacion> proyectosInvestigacion;
+    @OneToMany(mappedBy = "programaInvestigacion")
+    private Collection<ProyectoInvestigacion> proyectosInvestigacion;
 
-    public ArrayList<Object> getIntegrantes() {
+    public Collection<Object> getIntegrantes() {
         return integrantes;
     }
 
@@ -48,7 +51,7 @@ public class ProgramaInvestigacion implements Serializable {
         this.encargado = encargado;
     }
 
-    public ArrayList<ProyectoInvestigacion> getProyectosInvestigacion() {
+    public Collection<ProyectoInvestigacion> getProyectosInvestigacion() {
         return proyectosInvestigacion;
     }
 

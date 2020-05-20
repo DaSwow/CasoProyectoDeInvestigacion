@@ -7,14 +7,14 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 /**
  *
@@ -24,40 +24,64 @@ import javax.persistence.Table;
 
 public class Profesor extends Usuario implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id = super.getId();
+    @ManyToMany(mappedBy = "listaProfesoresInvolucrados")
+    private List<LineaInvestigacion> lineaInvestigacions;
 
-    private Doctor supervisor;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id = super.getId();
 
     private Periodo periodo;
 
-    @ManyToMany(mappedBy="listaProfesoresInvolucrados",cascade=CascadeType.PERSIST)
-    @JoinColumn(name="listaPublicaciones")
-    private ArrayList<Publicacion> listaPublicaciones;
+    @ManyToMany(mappedBy = "listaSupervisados",fetch=FetchType.LAZY)
+    private Collection<Doctor> listaSupervisores;
+    
+   
+    @ManyToMany(mappedBy = "listaProfesoresInvolucrados",fetch=FetchType.LAZY)
+    private Collection<PubRevistas> pubRevistas;
 
-    public ArrayList<Publicacion> getListaPublicaciones() {
-        return listaPublicaciones;
+
+    @ManyToMany(mappedBy = "listaProfesoresInvolucrados",fetch=FetchType.LAZY)
+    private Collection<PubCongreso> pubCongresos;
+
+    public List<LineaInvestigacion> getLineaInvestigacions() {
+        return lineaInvestigacions;
     }
 
-    public void setListaPublicaciones(ArrayList<Publicacion> listaPublicaciones) {
-        this.listaPublicaciones = listaPublicaciones;
+    public void setLineaInvestigacions(List<LineaInvestigacion> lineaInvestigacions) {
+        this.lineaInvestigacions = lineaInvestigacions;
+    }
+
+    public Collection<PubCongreso> getPubCongresos() {
+        return pubCongresos;
+    }
+
+    public void setPubCongresos(ArrayList<PubCongreso> pubCongresos) {
+        this.pubCongresos = pubCongresos;
     }
     
+    public Collection<Doctor> getListaSupervisores() {
+        return listaSupervisores;
+    }
+
+    public void setListaSupervisores(ArrayList<Doctor> listaSupervisores) {
+        this.listaSupervisores = listaSupervisores;
+    }
+
+    public Collection<PubRevistas> getPubRevistas() {
+        return pubRevistas;
+    }
+
+    public void setPubRevistas(ArrayList<PubRevistas> pubRevistas) {
+        this.pubRevistas = pubRevistas;
+    }
+
     public Periodo getPeriodo() {
         return periodo;
     }
 
     public void setPeriodo(Periodo periodo) {
         this.periodo = periodo;
-    }
-
-    public Doctor getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Doctor supervisor) {
-        this.supervisor = supervisor;
     }
 
     @Override

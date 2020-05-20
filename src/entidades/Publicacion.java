@@ -2,43 +2,26 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import java.util.Collection;
 
-@Entity
+
 public abstract class Publicacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name="idPublicacion")
+    
     private Integer id;
 
-    @Column (name="idProyecto")
     private Integer idProyecto;
 
-    @Column (name="titulo")
     private String titulo;
 
+    private Collection<Doctor> listaDoctoresInvolucrados;
 
-    @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="listaDoctoresInvolucrados")
-    private ArrayList<Doctor> listaDoctoresInvolucrados;
-    
-    @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="listaProfesoresInvolucrados")
-    private ArrayList<Profesor> listaProfesoresInvolucrados;
+    private Collection<Profesor> listaProfesoresInvolucrados;
 
+    private Collection<LineaInvestigacion> listaLineasInvestigacion;
 
-    private ArrayList<LineaInvestigacion> listaLineasInvestigacion;
-
-    private ArrayList<String> OrdenFirmas;
+    private Collection<String> OrdenFirmas;
 
     public Integer getIdProyecto() {
         return idProyecto;
@@ -56,7 +39,7 @@ public abstract class Publicacion implements Serializable {
         this.titulo = titulo;
     }
 
-    public ArrayList<LineaInvestigacion> getListaLineasInvestigacion() {
+    public Collection<LineaInvestigacion> getListaLineasInvestigacion() {
         return listaLineasInvestigacion;
     }
 
@@ -64,7 +47,7 @@ public abstract class Publicacion implements Serializable {
         this.listaLineasInvestigacion = listaLineasInvestigacion;
     }
 
-    public ArrayList<String> getOrdenFirmas() {
+    public Collection<String> getOrdenFirmas() {
         return OrdenFirmas;
     }
 
@@ -72,7 +55,7 @@ public abstract class Publicacion implements Serializable {
         this.OrdenFirmas = OrdenFirmas;
     }
 
-    public ArrayList<Doctor> getListaDoctoresInvolucrados() {
+    public Collection<Doctor> getListaDoctoresInvolucrados() {
         return listaDoctoresInvolucrados;
     }
 
@@ -80,18 +63,13 @@ public abstract class Publicacion implements Serializable {
         this.listaDoctoresInvolucrados = listaDoctoresInvolucrados;
     }
 
-    
-    
-    public ArrayList<Profesor> getListaProfesoresInvolucrados() {
+    public Collection<Profesor> getListaProfesoresInvolucrados() {
         return listaProfesoresInvolucrados;
     }
 
     public void setListaProfesoresInvolucrados(ArrayList<Profesor> listaProfesoresInvolucrados) {
         this.listaProfesoresInvolucrados = listaProfesoresInvolucrados;
-    
     }
-    
-    
 
     public Integer getId() {
         return id;

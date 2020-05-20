@@ -6,9 +6,6 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import javax.persistence.ManyToMany;
 
 /**
  *
